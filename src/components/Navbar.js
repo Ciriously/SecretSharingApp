@@ -81,7 +81,7 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
         <div className="hidden lg:flex items-center space-x-8">
           <a
             href="https://github.com/Ciriously/SecretSharingApp/blob/main/README.md"
-            className="text-white hover:text-blue-500 transition duration-300"
+            className="text-white font-inter hover:text-blue-500 transition duration-300"
           >
             Docs
           </a>
@@ -173,13 +173,13 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
               <div className="flex flex-col items-start space-y-4 mt-8">
                 <a
                   href="https://github.com/Ciriously/SecretSharingApp/blob/main/README.md"
-                  className="text-white hover:text-blue-500 transition duration-300"
+                  className="text-white font-inter hover:text-blue-500 transition duration-300"
                 >
                   Docs
                 </a>
                 <div className="group inline-block relative">
                   <button
-                    className="text-white focus:outline-none hover:text-blue-500 font-inter transition duration-300"
+                    className="text-white focus:outline-none font-inter hover:text-blue-500 font-inter transition duration-300"
                     onClick={toggleDropdown}
                   >
                     Features
@@ -202,13 +202,13 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
                   )}
                 </div>
                 <button
-                  className="text-white hover:text-blue-500 transition duration-300"
+                  className="text-white hover:text-blue-500 font-inter transition duration-300"
                   onClick={handleLogin}
                 >
                   Signup
                 </button>
                 <button
-                  className=" hover:text-blue-500 transition duration-300 bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
+                  className=" hover:text-blue-500 transition duration-300 t bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
                   onClick={handleLogin}
                 >
                   Login

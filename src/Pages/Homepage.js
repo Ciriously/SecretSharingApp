@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import FeaturesPage from "./FeaturesPage";
 
 const HomePage = () => {
   const { user, isAuthenticated, logout } = useAuth0();
@@ -81,6 +82,9 @@ const HomePage = () => {
           </p>
         )}
       </div>
+
+      {/* Features */}
+      <FeaturesPage />
     </div>
   );
 };
