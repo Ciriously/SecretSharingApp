@@ -1,22 +1,15 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
-import LoginPage from "./Pages/LoginPage";
+import HomePage from "./Pages/Homepage";
 
 function App() {
-  const { user, isAuthenticated, logout } = useAuth0();
-
-  console.log("Current user", user);
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div className="App">
       <header className="App-header">
-        {isAuthenticated && <h3>Hello {user.name}</h3>}
-        {isAuthenticated ? (
-          <button onClick={(e) => logout()}>Logout</button>
-        ) : (
-          <LoginPage />
-        )}
+        {isAuthenticated ? <HomePage /> : null}
       </header>
     </div>
   );
