@@ -14,9 +14,9 @@ const Chatbox = () => {
   const { user } = useAuth0();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-
   const [sessionName, setSessionName] = useState(generateRandomSessionName());
   const [startTime, setStartTime] = useState(new Date());
+  const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
 
   const db = getDatabase();
   const chatRef = ref(db, "chat");
@@ -96,6 +96,18 @@ const Chatbox = () => {
     }
   };
 
+  const handleLeaveClick = () => {
+    setShowLeaveConfirmation(true);
+  };
+
+  const handleLeaveConfirmation = (confirm) => {
+    setShowLeaveConfirmation(false);
+    if (confirm) {
+      // Redirect to the home page or any other desired action
+      window.location.href = "/";
+    }
+  };
+
   const calculateTimeSpent = () => {
     const currentTime = new Date();
     const timeDiff = currentTime - startTime;
@@ -106,28 +118,56 @@ const Chatbox = () => {
   return (
     <div className="flex flex-col md:flex-row w-full h-screen">
       {/* Sidebar */}
-      <div className="md:w-1/4 bg-cyan-950 text-white p-4 border-sky-500">
-        <div className="mb-4">
-          <h2 className="text-lg md:text-xl font-bold text-sky-500">
-            {sessionName}
+      <div className="md:w-1/4 bg-cyan-950 text-white p-4 border-sky-500 relative">
+        <button
+          onClick={handleLeaveClick}
+          className="mt-4 bg-red-600 text-white font-inter font-extrabold p-2 rounded-md cursor-pointer hover:bg-red-700 transition duration-300"
+        >
+          Leave
+        </button>
+
+        {/* Leave Confirmation Popup */}
+        {showLeaveConfirmation && (
+          <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center">
+            <div className="bg-black font-inter p-8 rounded-md shadow-md text-center">
+              <p className="text-lg font-semibold mb-4">
+                Are you sure you want to leave?
+              </p>
+              <div className="flex justify-center space-x-4">
+                <button
+                  onClick={() => handleLeaveConfirmation(true)}
+                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
+                >
+                  Yes
+                </button>
+                <button
+                  onClick={() => handleLeaveConfirmation(false)}
+                  className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400 transition duration-300"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Session Information */}
+        <div className="mt-8">
+          <h2 className="text-lg font-bold text-sky-500">
+            Session Information
           </h2>
-        </div>
-        <div className="mb-4 text-sky-500 text-base md:text-lg">
-          <p className="font-inter">
-            This is a secure channel. Messages can't be encrypted, so please
-            don't misbehave.
-          </p>
-        </div>
-        <div>
-          <p className="text-xs md:text-sm font-inter">
+          <p className="text-sm font-inter">Session Name: {sessionName}</p>
+          <p className="text-sm font-inter">
             Current Date: {new Date().toDateString()}
           </p>
-          <p className="text-xs md:text-sm font-inter">
+          <p className="text-sm font-inter">
             Time Spent: {calculateTimeSpent()} seconds
           </p>
         </div>
+
+        {/* Danger Bar */}
         <div className="mt-8 bg-red-600 text-white font-inter font-extrabold p-2 rounded-md">
-          <p className="text-base md:text-lg mb-5">
+          <p className="text-xl mb-5">
             🚫 Please don't share your personal information, credit cards, or
             any sensitive details. Keep it safe!
           </p>
@@ -137,14 +177,14 @@ const Chatbox = () => {
       {/* Chatbox */}
       <div className="flex flex-col md:w-3/4 bg-black border border-sky-500 shadow-lg overflow-hidden animate__animated animate__fadeInUp">
         <div className="p-4 border-b border-gray-300 bg-gray-800 text-white">
-          <h1 className="text-xl md:text-2xl font-bold">{sessionName}</h1>
+          <h1 className="text-xl font-bold">{sessionName}</h1>
         </div>
 
         <div className="flex-grow p-4 overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index} className="mb-4 flex items-start">
               <img
-                src={`https://placekitten.com/40/40?image=${index}`} // Use Unsplash API for random animal images
+                src={`https://placekitten.com/40/40?image=${index}`}
                 alt="User Profile"
                 className="w-8 h-8 rounded-full mr-2"
               />
@@ -184,7 +224,6 @@ const Chatbox = () => {
   );
 };
 
-// Function to generate a random session name
 const generateRandomSessionName = () => {
   const adjectives = ["Mystical", "Enchanted", "Whimsical", "Secretive"];
   const nouns = ["Jungle", "Harmony", "Oasis", "Serenity"];
