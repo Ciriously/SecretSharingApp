@@ -21,15 +21,13 @@ const root = createRoot(document.getElementById("root"));
 const app = initializeApp(firebaseConfig);
 
 root.render(
-  <Router>
-    <Auth0Provider
-      domain="dev-xl0nci16ko8yn7js.us.auth0.com"
-      clientId="AqhsYsvghCnwpRt2coVqS5BMZtGRaotl"
-      authorizationParams={{
-        redirect_uri: window.location.origin,
-      }}
-    >
-      <App />
-    </Auth0Provider>
-  </Router>
+  <Auth0Provider
+    domain="dev-xl0nci16ko8yn7js.us.auth0.com"
+    clientId="AqhsYsvghCnwpRt2coVqS5BMZtGRaotl"
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+  >
+    <App />
+  </Auth0Provider>
 );

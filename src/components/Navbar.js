@@ -15,6 +15,14 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  /// add this laterrrr
+  const handleSignup = () => {
+    navigate("/signup");
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <nav className="bg-black p-7 text-lg">
@@ -74,10 +82,16 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
             </div>
           ) : (
             <div className="flex items-center space-x-4">
-              <button className="text-slate hover:text-blue-500 transition duration-300 text-xl">
+              <button
+                className="text-slate hover:text-blue-500 font-inter transition duration-300 text-xl"
+                onClick={handleLogin}
+              >
                 Signup
               </button>
-              <button className="text-slate hover:text-blue-500 transition duration-300 text-xl">
+              <button
+                className="text-slate hover:text-blue-500 transition duration-300 text-xl bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
+                onClick={handleLogin}
+              >
                 Login
               </button>
             </div>
