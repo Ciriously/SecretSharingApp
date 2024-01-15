@@ -120,15 +120,21 @@ const Chatbox = () => {
       {/* Sidebar */}
       <div className="w-1/6 bg-black text-white p-4">
         <div className="mb-4">
-          <h2 className="text-xl font-bold">{sessionName}</h2>
+          <h2 className="text-xl font-bold text-sky-500">{sessionName}</h2>
         </div>
-        <div className="mb-4 text-blue-500 text-lg">
-          <p>This is a secure channel.</p>
-          <p>Messages can't be encrypted, so please don't misbehave.</p>
+        <div className="mb-4 text-sky-500 text-lg">
+          <p className="text-lg font-inter">
+            This is a secure channel. Messages can't be encrypted, so please
+            don't misbehave.
+          </p>
         </div>
         <div>
-          <p className="text-sm">Current Date: {new Date().toDateString()}</p>
-          <p className="text-sm">Time Spent: {calculateTimeSpent()} seconds</p>
+          <p className="text-sm font-inter">
+            Current Date: {new Date().toDateString()}
+          </p>
+          <p className="text-sm font-inter">
+            Time Spent: {calculateTimeSpent()} seconds
+          </p>
         </div>
       </div>
 
@@ -142,12 +148,21 @@ const Chatbox = () => {
         {/* Chat Window */}
         <div className="flex-grow p-4 overflow-y-auto">
           {messages.map((message, index) => (
-            <div key={index} className="mb-4">
+            <div key={index} className="mb-4 flex items-start">
+              <img
+                src={`https://placekitten.com/40/40?image=${index}(
+                  message.userEmail
+                )}`} // Use Unsplash API for random animal images
+                alt="User Profile"
+                className="w-8 h-8 rounded-full mr-2"
+              />
               <div
-                className={`bg-blue-500 text-white py-2 px-4 rounded-lg inline-block`}
+                className={`bg-blue-600 text-white py-4 px-6 rounded-lg inline-block`}
                 style={{ backgroundColor: getUserColor(message.userEmail) }}
               >
-                <span className="font-bold">{message.userName}:</span>{" "}
+                <span className="font-bold text-yellow-400">
+                  {message.userName}:
+                </span>{" "}
                 {message.newMessage}
               </div>
             </div>
@@ -177,7 +192,6 @@ const Chatbox = () => {
     </div>
   );
 };
-
 // Function to generate a random session name
 const generateRandomSessionName = () => {
   const adjectives = ["Mystical", "Enchanted", "Whimsical", "Secretive"];
