@@ -12,30 +12,43 @@ const HomePage = () => {
   };
 
   return (
-    <div className="font-inter">
+    <div className="font-mono h-screen bg-black text-white">
       <Navbar
         isAuthenticated={isAuthenticated}
         user={user}
         onLogout={handleLogout}
       />
-      <Secrets />
-      <div className="flex h-screen items-center justify-center bg-black text-white">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Secret Sharing</h1>
 
-          {isAuthenticated ? (
-            <div>
-              <p className="text-lg">
-                Welcome, {user.email}! You can start sharing your secrets
-                securely.
-              </p>
-            </div>
-          ) : (
-            <p className="text-lg">
-              Log in to start sharing your secrets securely.
-            </p>
-          )}
+      <div className="absolute top-10 left-10 m-8 flex flex-col">
+        {/* Title Screen with Gradient Text and Heart Gif */}
+        <div className="flex items-center">
+          <div className="text-8xl font-Inter font-extrabold mb-4 bg-gradient-to-r from-blue-500 to-white text-transparent bg-clip-text">
+            Secret Sharing
+          </div>
+          <img src="heart.gif" alt="Heart Gif" className="ml-2 h-16" />
         </div>
+
+        {/* Information */}
+        {isAuthenticated ? (
+          <div>
+            <p className="text-lg mt-4 font-inter font-semibold">
+              Welcome, {user.name}! You can start sharing your secrets securely.
+            </p>
+            {/* Description */}
+            <p className="text-4xl mt-7 font-inter text-slate-400 font-bold">
+              Share your thoughts, feelings, and secrets with the world while
+              keeping your identity secure.
+            </p>
+            {/* Arrow Link to Secrets Component */}
+            <a href="/secrets" className="text-4xl text-blue-500 mt-4">
+              Explore Secrets <span className="ml-2">&#8594;</span>
+            </a>
+          </div>
+        ) : (
+          <p className="text-lg">
+            Log in to start sharing your secrets securely.
+          </p>
+        )}
       </div>
     </div>
   );
