@@ -5,9 +5,9 @@ const LoginPage = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <div className="flex h-screen font-Inter">
-      {/* Left Section with Black Background */}
-      <div className="flex-none w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
+    <div className="flex flex-col lg:flex-row h-screen font-Inter">
+      {/* Left Section with Black Background (Hidden on Small Screens) */}
+      <div className="hidden lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
         {/* Logo and Text on Top */}
         <div className="flex flex-col items-center mb-8">
           <img
@@ -39,12 +39,23 @@ const LoginPage = () => {
       </div>
 
       {/* Right Section with Gradient Background and Stylish Login Form */}
-      <div className="flex-grow p-16 flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-white text-black relative">
-        <div className="bg-white bg-opacity-100 shadow-lg rounded-lg p-16 max-w-md w-full">
-          <h2 className="text-4xl font-bold mb-8 text-center">Signup</h2>
+      <div className="flex-grow p-8 lg:p-16 flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-white text-black relative">
+        {/* Mobile Title and Logo (Visible on Small Screens) */}
+        <div className="lg:hidden mb-8 text-center">
+          <img
+            src="lock.gif"
+            alt="Logo"
+            className="mb-1 ml-20"
+            style={{ width: "60px", height: "60px" }}
+          />
+          <p className="text-2xl font-bold font-mono">HushHub by Aditya</p>
+        </div>
+
+        <div className="bg-white bg-opacity-100 shadow-lg rounded-lg p-8 max-w-md w-full">
+          <h2 className="text-4xl font-bold mb-6 text-center">Signup</h2>
 
           {/* New Email Field */}
-          <div className="mb-8">
+          <div className="mb-6">
             <label
               className="block text-gray-700 text-l font-bold mb-2"
               htmlFor="email"
@@ -88,9 +99,8 @@ const LoginPage = () => {
             <hr className="flex-grow border-t" />
           </div>
 
-          {/* Two Animated Cool Login Buttons with Logo */}
-          <div className="flex flex-col items-center">
-            <button className="bg-white border border-black text-black font-mono py-3 px-6 rounded-half mb-4 w-full flex items-center justify-center">
+          <div className="flex flex-col items-center mb-6">
+            <button className="bg-white border border-black text-black font-mono font-bold py-3 px-6 rounded-half mb-2 w-full flex items-center justify-center">
               <img
                 src="google.png"
                 alt="Google Logo"
@@ -98,7 +108,7 @@ const LoginPage = () => {
               />
               Continue with Google
             </button>
-            <button className="bg-white border border-black text-black font-mono py-3 px-6 rounded-half mb-4 w-full flex items-center justify-center">
+            <button className="bg-white border border-black text-black font-mono font-bold py-3 px-6 rounded-half mb-2 w-full flex items-center justify-center">
               <img
                 src="github.png"
                 alt="GitHub Logo"
@@ -108,11 +118,16 @@ const LoginPage = () => {
             </button>
           </div>
 
-          {/* Additional Button with Logo */}
-          <button className="bg-white border border-black text-black font-mono py-3 px-6 rounded-half mb-4 w-full flex items-center justify-center">
+          {/* Apple Button with Logo */}
+          <button className="bg-white border border-black text-black font-mono font-bold py-3 px-6 rounded-half mb-2 w-full flex items-center justify-center">
             <img src="apple.png" alt="Custom Logo" className="w-6 h-6 mr-2" />
             Continue with Apple
           </button>
+
+          {/* Footer for Mobile */}
+          <footer className="text-center font-Inter text-sm">
+            &copy; 2024 Aditya Mishra. All rights reserved.
+          </footer>
         </div>
       </div>
     </div>
