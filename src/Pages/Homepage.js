@@ -44,7 +44,7 @@ const HomePage = () => {
         {/* Title Screen */}
         <div className="flex flex-col items-center mt-8 md:mt-14">
           <div className="text-4xl md:text-8xl font-inter font-extrabold bg-gradient-to-r from-blue-500 to-white text-transparent bg-clip-text">
-            Secret Sharing
+            HushHubs
           </div>
           <img
             src="logo.gif"

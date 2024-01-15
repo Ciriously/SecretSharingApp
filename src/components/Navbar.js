@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +11,6 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
 
   const handleLogout = () => {
     // Redirect to the homepage after logout
-    navigate("/");
     onLogout(); // Call the provided onLogout function
   };
 
@@ -49,10 +49,15 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
   return (
     <nav className="bg-black p-7 text-lg">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <img src="logo.png" alt="Logo" className="mr-1 h-12" />
-          <h1 className="text-slate text-3xl font-inter font-bold">HushHub</h1>
-        </div>
+        {/* Link to the Homepage */}
+        <Link to="/">
+          <div className="flex items-center space-x-4">
+            <img src="logo.png" alt="Logo" className="mr-1 h-12" />
+            <h1 className="text-slate text-3xl font-inter font-bold">
+              HushHub
+            </h1>
+          </div>
+        </Link>
 
         {/* Mobile Navigation sliderrr*/}
         <div className="lg:hidden">

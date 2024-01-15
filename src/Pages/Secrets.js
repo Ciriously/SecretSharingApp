@@ -152,7 +152,7 @@ const Chatbox = () => {
         )}
 
         {/* Session Information */}
-        <div className="mt-8">
+        <div className="mt-8 md:block hidden">
           <h2 className="text-lg font-bold text-sky-500">
             Session Information
           </h2>
@@ -166,7 +166,7 @@ const Chatbox = () => {
         </div>
 
         {/* Danger Bar */}
-        <div className="mt-8 bg-red-600 text-white font-inter font-extrabold p-2 rounded-md">
+        <div className="mt-8 bg-red-600 text-white font-inter font-extrabold p-2 rounded-md hidden md:block">
           <p className="text-xl mb-5">
             🚫 Please don't share your personal information, credit cards, or
             any sensitive details. Keep it safe!
@@ -209,7 +209,7 @@ const Chatbox = () => {
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message..."
+            placeholder="Spill the Tea..."
             className="flex-grow px-4 py-2 mr-2 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500 bg-black text-white"
           />
           <button
