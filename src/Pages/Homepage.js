@@ -12,17 +12,17 @@ const HomePage = () => {
   };
 
   return (
-    <div className="font-mono h-screen bg-black text-white">
+    <div className="font-mono h-screen bg-black text-white  flex-col items-center">
       <Navbar
         isAuthenticated={isAuthenticated}
         user={user}
         onLogout={handleLogout}
       />
 
-      <div className="absolute top-10 left-10 m-8 flex flex-col">
+      <div className="flex flex-col items-center justify-center h-full">
         {/* Title Screen with Gradient Text and Heart Gif */}
-        <div className="flex items-center">
-          <div className="text-8xl font-Inter font-extrabold mb-4 bg-gradient-to-r from-blue-500 to-white text-transparent bg-clip-text">
+        <div className="flex items-center mt-2">
+          <div className="text-8xl font-Inter font-extrabold bg-gradient-to-r from-blue-500 to-white text-transparent bg-clip-text">
             Secret Sharing
           </div>
           <img src="heart.gif" alt="Heart Gif" className="ml-2 h-16" />
@@ -30,12 +30,9 @@ const HomePage = () => {
 
         {/* Information */}
         {isAuthenticated ? (
-          <div>
-            <p className="text-lg mt-4 font-inter font-semibold">
-              Welcome, {user.name}! You can start sharing your secrets securely.
-            </p>
+          <div className="flex flex-col items-center">
             {/* Description */}
-            <p className="text-4xl mt-7 font-inter text-slate-400 font-bold">
+            <p className="text-4xl font-inter text-slate-400 font-bold mt-4 text-center">
               Share your thoughts, feelings, and secrets with the world while
               keeping your identity secure.
             </p>
