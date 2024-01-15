@@ -15,6 +15,9 @@ const Chatbox = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
+  const [sessionName, setSessionName] = useState(generateRandomSessionName());
+  const [startTime, setStartTime] = useState(new Date());
+
   const db = getDatabase();
   const chatRef = ref(db, "chat");
 
@@ -105,44 +108,84 @@ const Chatbox = () => {
     }
   };
 
+  const calculateTimeSpent = () => {
+    const currentTime = new Date();
+    const timeDiff = currentTime - startTime;
+    const seconds = Math.floor(timeDiff / 1000);
+    return seconds;
+  };
+
   return (
-    <div className="flex flex-col w-96 h-96 mx-auto mt-4 rounded-md bg-white border border-gray-300 shadow-lg overflow-hidden animate__animated animate__fadeInUp">
-      {/* Chat Window */}
-      <div className="flex-grow p-4 overflow-y-auto">
-        {messages.map((message, index) => (
-          <div key={index} className="mb-4">
-            <div
-              className={`bg-blue-500 text-white py-2 px-4 rounded-lg inline-block`}
-              style={{ backgroundColor: getUserColor(message.userEmail) }}
-            >
-              <span className="font-bold">{message.userName}:</span>{" "}
-              {message.newMessage}
-            </div>
-          </div>
-        ))}
+    <div className="flex flex-row w-full h-screen">
+      {/* Sidebar */}
+      <div className="w-1/6 bg-black text-white p-4">
+        <div className="mb-4">
+          <h2 className="text-xl font-bold">{sessionName}</h2>
+        </div>
+        <div className="mb-4 text-blue-500 text-lg">
+          <p>This is a secure channel.</p>
+          <p>Messages can't be encrypted, so please don't misbehave.</p>
+        </div>
+        <div>
+          <p className="text-sm">Current Date: {new Date().toDateString()}</p>
+          <p className="text-sm">Time Spent: {calculateTimeSpent()} seconds</p>
+        </div>
       </div>
 
-      {/* Message Input and Send Button */}
-      <form
-        onSubmit={handleSendMessage}
-        className="flex p-4 border-t-2 border-gray-300"
-      >
-        <input
-          type="text"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="Type your message..."
-          className="flex-grow px-4 py-2 mr-2 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500"
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition-all duration-300 ease-in-out"
+      {/* Chatbox */}
+      <div className="flex flex-col w-5/6 bg-black border border-sky-500 shadow-lg overflow-hidden animate__animated animate__fadeInUp">
+        {/* Title Bar */}
+        <div className="p-4 border-b border-gray-300 bg-gray-800 text-white">
+          <h1 className="text-xl font-bold">{sessionName}</h1>
+        </div>
+
+        {/* Chat Window */}
+        <div className="flex-grow p-4 overflow-y-auto">
+          {messages.map((message, index) => (
+            <div key={index} className="mb-4">
+              <div
+                className={`bg-blue-500 text-white py-2 px-4 rounded-lg inline-block`}
+                style={{ backgroundColor: getUserColor(message.userEmail) }}
+              >
+                <span className="font-bold">{message.userName}:</span>{" "}
+                {message.newMessage}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Message Input and Send Button */}
+        <form
+          onSubmit={handleSendMessage}
+          className="flex p-4 border-t-2 border-gray-300 bg-black"
         >
-          Send
-        </button>
-      </form>
+          <input
+            type="text"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message..."
+            className="flex-grow px-4 py-2 mr-2 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500 bg-black text-white"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition-all duration-300 ease-in-out"
+          >
+            Send
+          </button>
+        </form>
+      </div>
     </div>
   );
+};
+
+// Function to generate a random session name
+const generateRandomSessionName = () => {
+  const adjectives = ["Mystical", "Enchanted", "Whimsical", "Secretive"];
+  const nouns = ["Jungle", "Harmony", "Oasis", "Serenity"];
+  const randomAdjective =
+    adjectives[Math.floor(Math.random() * adjectives.length)];
+  const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+  return `${randomAdjective} ${randomNoun} Chatroom`;
 };
 
 export default Chatbox;

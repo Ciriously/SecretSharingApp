@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 import "./index.css";
+import { BrowserRouter as Router } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -17,15 +18,18 @@ const firebaseConfig = {
 
 const root = createRoot(document.getElementById("root"));
 
-root.render(
-  <Auth0Provider
-    domain="dev-xl0nci16ko8yn7js.us.auth0.com"
-    clientId="AqhsYsvghCnwpRt2coVqS5BMZtGRaotl"
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-    }}
-  >
-    <App />
-  </Auth0Provider>
-);
 const app = initializeApp(firebaseConfig);
+
+root.render(
+  <Router>
+    <Auth0Provider
+      domain="dev-xl0nci16ko8yn7js.us.auth0.com"
+      clientId="AqhsYsvghCnwpRt2coVqS5BMZtGRaotl"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <App />
+    </Auth0Provider>
+  </Router>
+);
