@@ -36,15 +36,11 @@ const Chatbox = () => {
   }, []);
 
   const getUserColor = (email) => {
-    // Check if the user already has a color assigned
     if (userColors[email]) {
       return userColors[email];
     }
 
-    // Generate a random color
     const color = getRandomColor();
-
-    // Save the color in the state
     userColors[email] = color;
 
     return color;
@@ -63,22 +59,17 @@ const Chatbox = () => {
   };
 
   const getUserAnimal = (email) => {
-    // Check if the user already has an animal name assigned
     if (userAnimals[email]) {
       return userAnimals[email];
     }
 
-    // Generate a unique animal name
     const animal = generateUniqueAnimalName();
-
-    // Save the animal name in the state
     userAnimals[email] = animal;
 
     return animal;
   };
 
   const generateUniqueAnimalName = () => {
-    // Add more animal names as needed
     const animalNames = [
       "Tiger",
       "Elephant",
@@ -87,10 +78,7 @@ const Chatbox = () => {
       "Penguin",
       "Panda",
     ];
-
-    // Generate a random index
     const randomIndex = Math.floor(Math.random() * animalNames.length);
-
     return animalNames[randomIndex];
   };
 
@@ -116,29 +104,30 @@ const Chatbox = () => {
   };
 
   return (
-    <div className="flex flex-row w-full h-screen">
+    <div className="flex flex-col md:flex-row w-full h-screen">
       {/* Sidebar */}
-      <div className="w-1/6 bg-cyan-950 text-white p-4  border-sky-500 ">
+      <div className="md:w-1/4 bg-cyan-950 text-white p-4 border-sky-500">
         <div className="mb-4">
-          <h2 className="text-xl font-bold text-sky-500">{sessionName}</h2>
+          <h2 className="text-lg md:text-xl font-bold text-sky-500">
+            {sessionName}
+          </h2>
         </div>
-        <div className="mb-4 text-sky-500 text-lg">
-          <p className="text-lg font-inter">
+        <div className="mb-4 text-sky-500 text-base md:text-lg">
+          <p className="font-inter">
             This is a secure channel. Messages can't be encrypted, so please
             don't misbehave.
           </p>
         </div>
         <div>
-          <p className="text-sm font-inter">
+          <p className="text-xs md:text-sm font-inter">
             Current Date: {new Date().toDateString()}
           </p>
-          <p className="text-sm font-inter">
+          <p className="text-xs md:text-sm font-inter">
             Time Spent: {calculateTimeSpent()} seconds
           </p>
         </div>
-        {/* Danger Bar */}
-        <div className="mt-8 bg-red-600  text-white font-inter font-extrabold p-2 rounded-md">
-          <p className="text-xl mb-5">
+        <div className="mt-8 bg-red-600 text-white font-inter font-extrabold p-2 rounded-md">
+          <p className="text-base md:text-lg mb-5">
             🚫 Please don't share your personal information, credit cards, or
             any sensitive details. Keep it safe!
           </p>
@@ -146,20 +135,16 @@ const Chatbox = () => {
       </div>
 
       {/* Chatbox */}
-      <div className="flex flex-col w-5/6 bg-black border border-sky-500 shadow-lg overflow-hidden animate__animated animate__fadeInUp">
-        {/* Title Bar */}
+      <div className="flex flex-col md:w-3/4 bg-black border border-sky-500 shadow-lg overflow-hidden animate__animated animate__fadeInUp">
         <div className="p-4 border-b border-gray-300 bg-gray-800 text-white">
-          <h1 className="text-xl font-bold">{sessionName}</h1>
+          <h1 className="text-xl md:text-2xl font-bold">{sessionName}</h1>
         </div>
 
-        {/* Chat Window */}
         <div className="flex-grow p-4 overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index} className="mb-4 flex items-start">
               <img
-                src={`https://placekitten.com/40/40?image=${index}(
-                  message.userEmail
-                )}`} // Use Unsplash API for random animal images
+                src={`https://placekitten.com/40/40?image=${index}`} // Use Unsplash API for random animal images
                 alt="User Profile"
                 className="w-8 h-8 rounded-full mr-2"
               />
@@ -176,7 +161,6 @@ const Chatbox = () => {
           ))}
         </div>
 
-        {/* Message Input and Send Button */}
         <form
           onSubmit={handleSendMessage}
           className="flex p-4 border-t-2 border-gray-300 bg-black"
@@ -199,6 +183,7 @@ const Chatbox = () => {
     </div>
   );
 };
+
 // Function to generate a random session name
 const generateRandomSessionName = () => {
   const adjectives = ["Mystical", "Enchanted", "Whimsical", "Secretive"];
