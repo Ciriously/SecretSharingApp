@@ -7,7 +7,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen font-Inter">
       {/* Left Section with Black Background (Hidden on Small Screens) */}
-      <div className="hidden lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
+      <div className="lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
         {/* Logo and Text on Top */}
         <div className="flex flex-col items-center mb-8">
           <img
