@@ -118,7 +118,7 @@ const Chatbox = () => {
   return (
     <div className="flex flex-row w-full h-screen">
       {/* Sidebar */}
-      <div className="w-1/6 bg-black text-white p-4">
+      <div className="w-1/6 bg-cyan-950 text-white p-4  border-sky-500 ">
         <div className="mb-4">
           <h2 className="text-xl font-bold text-sky-500">{sessionName}</h2>
         </div>
@@ -134,6 +134,13 @@ const Chatbox = () => {
           </p>
           <p className="text-sm font-inter">
             Time Spent: {calculateTimeSpent()} seconds
+          </p>
+        </div>
+        {/* Danger Bar */}
+        <div className="mt-8 bg-red-600  text-white font-inter font-extrabold p-2 rounded-md">
+          <p className="text-xl mb-5">
+            🚫 Please don't share your personal information, credit cards, or
+            any sensitive details. Keep it safe!
           </p>
         </div>
       </div>
@@ -160,7 +167,7 @@ const Chatbox = () => {
                 className={`bg-blue-600 text-white py-4 px-6 rounded-lg inline-block`}
                 style={{ backgroundColor: getUserColor(message.userEmail) }}
               >
-                <span className="font-bold text-yellow-400">
+                <span className="font-bold text-yellow-200">
                   {message.userName}:
                 </span>{" "}
                 {message.newMessage}
