@@ -1,29 +1,21 @@
 import React from "react";
-import { useSwipeable } from "react-swipeable";
 import Footer from "../components/Footer";
 
 const FeatureCard = ({ title, description, image }) => {
-  const swipeHandlers = useSwipeable({
-    onSwipedDown: () => {
-      // Handle the swipe down event here
-      console.log("Swiped down");
-    },
-  });
-
   return (
-    <div
-      className="bg-black text-white p-8 rounded-md shadow-md mb-8"
-      {...swipeHandlers}
-    >
+    <div className="bg-black text-white p-8 rounded-md shadow-md mb-8 animate__animated animate__fadeIn">
       <div className="flex items-center justify-center mb-8">
         <img src={image} alt={title} className="w-medium h-medium mt-9" />
       </div>
-      <h2 className="text-4xl font-bold mb-4">{title}</h2>
-      <p className="text-lg">{description}</p>
+      <h2 className="text-5xl font-bold mb-4 font-inter animate__animated animate__fadeIn">
+        {title}
+      </h2>
+      <p className="text-xl font-inter animate__animated animate__fadeIn">
+        {description}
+      </p>
     </div>
   );
 };
-
 const FeaturesPage = () => {
   const features = [
     {
@@ -61,5 +53,4 @@ const FeaturesPage = () => {
     </div>
   );
 };
-
 export default FeaturesPage;
