@@ -212,18 +212,33 @@ const Navbar = () => {
                     </ul>
                   )}
                 </div>
-                <button
-                  className="text-white hover:text-blue-500 font-inter transition duration-300"
-                  onClick={handleLogin}
-                >
-                  Signup
-                </button>
-                <button
-                  className="hover:text-blue-500 transition duration-300 t bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
-                  onClick={handleLogin}
-                >
-                  Login
-                </button>
+                {isAuthenticated ? (
+                  <button
+                    className="bg-white text-black font-inter font-bold py-2 px-4 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
+                    onClick={() =>
+                      logout({
+                        logoutParams: { returnTo: window.location.origin },
+                      })
+                    }
+                  >
+                    Log Out
+                  </button>
+                ) : (
+                  <React.Fragment>
+                    <button
+                      className="text-white hover:text-blue-500 font-inter transition duration-300"
+                      onClick={handleLogin}
+                    >
+                      Signup
+                    </button>
+                    <button
+                      className="hover:text-blue-500 transition duration-300 bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
+                      onClick={handleLogin}
+                    >
+                      Login
+                    </button>
+                  </React.Fragment>
+                )}
               </div>
             </div>
           </div>

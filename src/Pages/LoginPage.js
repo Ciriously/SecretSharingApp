@@ -118,12 +118,6 @@ const LoginPage = () => {
             </button>
           </div>
 
-          {/* Apple Button with Logo */}
-          <button className="bg-white border border-black text-black font-mono font-bold py-3 px-6 rounded-half mb-2 w-full flex items-center justify-center">
-            <img src="apple.png" alt="Custom Logo" className="w-6 h-6 mr-2" />
-            Continue with Apple
-          </button>
-
           {/* Footer for Mobile */}
           <footer className="text-center font-Inter text-sm">
             &copy; 2024 Aditya Mishra. All rights reserved.
