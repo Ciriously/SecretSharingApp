@@ -184,7 +184,7 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
                 </a>
                 <div className="group inline-block relative">
                   <button
-                    className="text-white focus:outline-none font-inter hover:text-blue-500 font-inter transition duration-300"
+                    className="text-white focus:outline-none  hover:text-blue-500 font-inter transition duration-300"
                     onClick={toggleDropdown}
                   >
                     Features
