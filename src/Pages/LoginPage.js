@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginPage = () => {
   const { loginWithRedirect } = useAuth0();
+  const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setIsEmailValid(true);
+  };
+
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleLogin = () => {
+    const isValid = validateEmail();
+
+    if (!isValid) {
+      setIsEmailValid(false);
+      return;
+    }
+
+    loginWithRedirect();
+  };
 
   return (
     <div className="flex flex-col lg:flex-row h-screen font-Inter">
       {/* Left Section with Black Background (Hidden on Small Screens) */}
       <div className="hidden lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
-        {/* Logo and Text on Top */}
         <div className="flex flex-col items-center mb-8">
           <img
             src="lock.gif"
@@ -20,19 +42,14 @@ const LoginPage = () => {
             HushHub by Aditya
           </p>
         </div>
-
-        {/* Hello World Text in the Middle */}
         <div className="text-center mb-4">
           <p className="text-6xl font-Inter font-bold">
             Where Confidentiality Meets Connectivity.
           </p>
-          {/* Additional Text below the main heading */}
           <p className="text-xl font-Inter font-light text-white mt-4">
             Discover a secure way to connect with HushHub.
           </p>
         </div>
-
-        {/* Footer */}
         <footer className="text-center font-Inter text-sm">
           &copy; 2024 Aditya Mishra. All rights reserved.
         </footer>
@@ -40,7 +57,6 @@ const LoginPage = () => {
 
       {/* Right Section with Gradient Background and Stylish Login Form */}
       <div className="flex-grow p-8 lg:p-16 flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-white text-black relative">
-        {/* Mobile Title and Logo (Visible on Small Screens) */}
         <div className="lg:hidden mb-8 text-center">
           <img
             src="lock.gif"
@@ -63,14 +79,22 @@ const LoginPage = () => {
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className={`shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                !isEmailValid ? "border-red-500" : ""
+              }`}
               id="email"
               type="email"
               placeholder="Enter your email"
+              value={email}
+              onChange={handleEmailChange}
             />
+            {!isEmailValid && (
+              <p className="text-red-500 text-sm mt-2">
+                Please enter a valid email address.
+              </p>
+            )}
           </div>
 
-          {/* Terms and Conditions Text */}
           <p className="text-sm mb-6">
             By continuing, you agree to the{" "}
             <a href="#" className="underline text-blue-500">
@@ -86,7 +110,7 @@ const LoginPage = () => {
           {/* Animated Stylish Login Button with Logo */}
           <button
             className="bg-blue-600 hover:bg-sky-500 text-white font-mono py-3 px-6 rounded-half w-full transition duration-300 ease-in-out transform hover:scale-105 mb-4 flex items-center justify-center"
-            onClick={() => loginWithRedirect()}
+            onClick={handleLogin}
           >
             <img src="star.gif" alt="Facebook Logo" className="w-8 h-8 mr-2" />
             Continue with Your Account
@@ -118,7 +142,6 @@ const LoginPage = () => {
             </button>
           </div>
 
-          {/* Footer for Mobile */}
           <footer className="text-center font-Inter text-sm">
             &copy; 2024 Aditya Mishra. All rights reserved.
           </footer>
