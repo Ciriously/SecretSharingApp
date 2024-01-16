@@ -7,7 +7,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen font-Inter">
       {/* Left Section with Black Background (Hidden on Small Screens) */}
-      <div className="lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
+      <div className="hidden lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
         {/* Logo and Text on Top */}
         <div className="flex flex-col items-center mb-8">
           <img
@@ -73,11 +73,11 @@ const LoginPage = () => {
           {/* Terms and Conditions Text */}
           <p className="text-sm mb-6">
             By continuing, you agree to the{" "}
-            <a href="https://example.com/" className="underline text-blue-500">
+            <a href="#" className="underline text-blue-500">
               Self Service PSS
             </a>{" "}
             and{" "}
-            <a href="https://example.com/" className="underline text-blue-500">
+            <a href="#" className="underline text-blue-500">
               Privacy Policy
             </a>
             .
@@ -117,12 +117,6 @@ const LoginPage = () => {
               Continue with GitHub
             </button>
           </div>
-
-          {/* Apple Button with Logo */}
-          <button className="bg-white border border-black text-black font-mono font-bold py-3 px-6 rounded-half mb-2 w-full flex items-center justify-center">
-            <img src="apple.png" alt="Custom Logo" className="w-6 h-6 mr-2" />
-            Continue with Apple
-          </button>
 
           {/* Footer for Mobile */}
           <footer className="text-center font-Inter text-sm">

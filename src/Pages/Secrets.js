@@ -188,10 +188,10 @@ const Chatbox = () => {
                 className="w-8 h-8 rounded-full mr-2"
               />
               <div
-                className={`bg-blue-600 text-white py-4 px-6 rounded-lg inline-block`}
+                className={`bg-blue-600 font-inter font-semibold text-white py-4 px-6 rounded-lg inline-block`}
                 style={{ backgroundColor: getUserColor(message.userEmail) }}
               >
-                <span className="font-bold text-yellow-200">
+                <span className="font-bold text-purple-900">
                   {message.userName}:
                 </span>{" "}
                 {message.newMessage}

@@ -78,7 +78,24 @@ const HomePage = () => {
           </div>
         ) : (
           <p className="text-lg md:text-xl mt-6 md:mt-10">
-            Log in to start sharing your secrets securely.
+            <div className="border border-transparent p-4 rounded-md mt-8 md:mt-14 max-w-6xl text-center">
+              <p className="text-lg md:text-4xl font-mono text-sky-400 font-bold mb-4">
+                Log in to start sharing your secrets securely.{" "}
+                <p className="text-lg md:text-2xl font-mono text-slate-400 mb-4 font-bold">
+                  Welcome to HushHubs! 🤫 Where secrets meet laughter, and
+                  hushes turn into giggles! 🎉 At HushHubs, we believe that
+                  life's too short for boring conversations. So, why not add a
+                  sprinkle of mystery, a dash of wit, and a pinch of laughter to
+                  your chats? 🤣✨ Unleash your inner spy, share your deepest
+                  secrets (or just what you had for breakfast 🥞), and join the
+                  fun in our covert community of chatterboxes! Remember, what
+                  happens in HushHubs stays in HushHubs... unless it's too
+                  hilarious not to share! 😉🤐 Click that mysterious door icon
+                  to enter, and let the secret conversations begin! 🚪🔐
+                  Pssst... The password is "Shhh-ecret!" 🤫
+                </p>
+              </p>
+            </div>
           </p>
         )}
       </div>

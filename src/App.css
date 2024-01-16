@@ -1,3 +1,32 @@
-body {
-  background-color: black;
+/* Add this CSS to your stylesheets or within a style tag in your components */
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #3498db,
+    #ffffff
+  ); /* Adjust gradient colors as needed */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000; /* Set the track color to black */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* Hide the scrollbar buttons */
+}
+
+/* For Firefox */
+/* Note: Firefox does not support gradients on scrollbar-thumb */
+
+* {
+  scrollbar-color: #3498db #000000;
+  scrollbar-width: thin;
 }

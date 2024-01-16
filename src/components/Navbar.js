@@ -77,6 +77,12 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:flex items-center space-x-8">
+          <Link
+            to="/secrets"
+            className="text-gradient-blue-white font-inter hover:text-blue-500 transition duration-300"
+          >
+            Secrets
+          </Link>
           <a
             href="https://github.com/Ciriously/SecretSharingApp/blob/main/README.md"
             className="text-white font-inter hover:text-blue-500 transition duration-300"
@@ -128,7 +134,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-4">
               <button
                 className="text-slate hover:text-blue-500 font-inter transition duration-300 text-xl"
-                onClick={handleSignup}
+                onClick={handleLogin}
               >
                 Signup
               </button>
@@ -169,6 +175,13 @@ const Navbar = () => {
               </button>
 
               <div className="flex flex-col items-start space-y-4 mt-8">
+                <Link
+                  to="/secrets"
+                  className="bg-clip-text text-transparent font-inter font-extrabold bg-gradient-to-r from-blue-500 to-white hover:text-blue-500 transition duration-300 px-4 py-2 rounded-full"
+                >
+                  Secrets
+                </Link>
+
                 <a
                   href="https://github.com/Ciriously/SecretSharingApp/blob/main/README.md"
                   className="text-white font-inter hover:text-blue-500 transition duration-300"
@@ -201,7 +214,7 @@ const Navbar = () => {
                 </div>
                 <button
                   className="text-white hover:text-blue-500 font-inter transition duration-300"
-                  onClick={handleSignup}
+                  onClick={handleLogin}
                 >
                   Signup
                 </button>
