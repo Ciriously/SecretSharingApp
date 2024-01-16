@@ -17,7 +17,7 @@ const firebaseConfig = {
 
 const root = createRoot(document.getElementById("root"));
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 root.render(
   <Auth0Provider

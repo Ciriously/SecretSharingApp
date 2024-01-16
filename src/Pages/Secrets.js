@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   getDatabase,
   ref,
@@ -14,13 +14,12 @@ const Chatbox = () => {
   const { user } = useAuth0();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [sessionName, setSessionName] = useState(generateRandomSessionName());
-  const [startTime, setStartTime] = useState(new Date());
+  const [sessionName] = useState(generateRandomSessionName()); // Removed setSessionName
+  const [startTime] = useState(new Date()); // Removed setStartTime
   const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
 
   const db = getDatabase();
-  const chatRef = ref(db, "chat");
-
+  const chatRef = useMemo(() => ref(db, "chat"), [db]);
   useEffect(() => {
     const handleChildAdded = (snapshot) => {
       const messageData = snapshot.val();
@@ -33,7 +32,7 @@ const Chatbox = () => {
     return () => {
       off(chatRef, "child_added", handleChildAdded);
     };
-  }, []);
+  }, [chatRef]);
 
   const getUserColor = (email) => {
     if (userColors[email]) {

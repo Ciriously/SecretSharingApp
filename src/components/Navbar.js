@@ -10,11 +10,6 @@ const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const mobileNavRef = useRef(null);
 
-  const handleLogout = () => {
-    // Redirect to the homepage after logout
-    logout({ returnTo: window.location.origin });
-  };
-
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };

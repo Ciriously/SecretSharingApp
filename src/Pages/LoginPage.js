@@ -73,11 +73,11 @@ const LoginPage = () => {
           {/* Terms and Conditions Text */}
           <p className="text-sm mb-6">
             By continuing, you agree to the{" "}
-            <a href="#" className="underline text-blue-500">
+            <a href="https://example.com/" className="underline text-blue-500">
               Self Service PSS
             </a>{" "}
             and{" "}
-            <a href="#" className="underline text-blue-500">
+            <a href="https://example.com/" className="underline text-blue-500">
               Privacy Policy
             </a>
             .
