@@ -1,5 +1,13 @@
 # Secret Sharing App 🤐🔒
 
+🏠 **Home**
+
+![Home Screenshot 1](./public/home.jpg)
+
+🗨️ **Secrets Chatroom**
+
+![Chatroom Screenshot](./public/Cr.jpg)
+
 This is a secret sharing app built with React.js, Auth0 for authentication, and Firebase for real-time communication and message storing.
 
 ## Installation
@@ -7,13 +15,13 @@ This is a secret sharing app built with React.js, Auth0 for authentication, and 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/secret-sharing-app.git
+   git clone https://github.com/Ciriously/SecretSharingApp
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd secret-sharing-app
+   cd SecretsApp
    ```
 
 3. Install the dependencies:
@@ -48,7 +56,11 @@ This is a secret sharing app built with React.js, Auth0 for authentication, and 
    http://localhost:3000
    ```
 
-## Features
+🌐 **Deployed Version**
+
+The app is deployed on Vercel. You can access it [HushHub](https://secretsharingapp.vercel.app/).
+
+## Features 🚀
 
 - User authentication with Auth0.
 - Real-time communication using Firebase Realtime Database.

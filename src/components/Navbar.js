@@ -98,18 +98,18 @@ const Navbar = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute bg-white text-black mt-1 rounded-lg overflow-hidden shadow-md transform transition-transform origin-top-right">
-                <ul className="flex flex-col space-y-2 p-2">
-                  <li className="hover:bg-gray-200 px-4 py-2 transition duration-300">
+              <div className="absolute bg-white text-black mt-1 font-inter font-medium rounded-lg overflow-hidden shadow-md transform transition-transform origin-top-right">
+                <ul className="flex flex-col space-y-4 p-8 w-auto">
+                  <li className="hover:bg-sky-200 px-4 py-2 transition duration-300">
                     Real-time messaging
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-2 transition duration-300">
+                  <li className="hover:bg-sky-200 px-4 py-2 transition duration-300">
                     End-to-end encryption
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-2 transition duration-300">
+                  <li className="hover:bg-sky-200 px-4 py-2 transition duration-300">
                     User-friendly interface
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-2 transition duration-300">
+                  <li className="hover:bg-sky-200 px-4 py-2 transition duration-300">
                     Customizable settings
                   </li>
                 </ul>
