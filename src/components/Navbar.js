@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ isAuthenticated, user, onLogout }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth0();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const mobileNavRef = useRef(null);
 
   const handleLogout = () => {
     // Redirect to the homepage after logout
-    onLogout(); // Call the provided onLogout function
+    logout({ returnTo: window.location.origin });
   };
 
   const toggleDropdown = () => {
@@ -49,7 +50,6 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
   return (
     <nav className="bg-black p-7 text-lg">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Link to the Homepage */}
         <Link to="/">
           <div className="flex items-center space-x-4">
             <img src="logo.png" alt="Logo" className="mr-1 h-12" />
@@ -59,7 +59,6 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
           </div>
         </Link>
 
-        {/* Mobile Navigation sliderrr*/}
         <div className="lg:hidden">
           <button
             className="text-white focus:outline-none"
@@ -82,7 +81,6 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
           </button>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           <a
             href="https://github.com/Ciriously/SecretSharingApp/blob/main/README.md"
@@ -124,16 +122,18 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
               </p>
               <button
                 className="bg-white text-black font-inter font-bold py-2 px-4 rounded-full hover:bg-blue-500 hover:text-white transition duration-300"
-                onClick={handleLogout}
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
               >
-                Logout
+                Log Out
               </button>
             </div>
           ) : (
             <div className="flex items-center space-x-4">
               <button
                 className="text-slate hover:text-blue-500 font-inter transition duration-300 text-xl"
-                onClick={handleLogin}
+                onClick={handleSignup}
               >
                 Signup
               </button>
@@ -147,7 +147,6 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
           )}
         </div>
 
-        {/* Mobile Navigation Menu */}
         {isMobileNavOpen && (
           <div
             ref={mobileNavRef}
@@ -174,7 +173,6 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
                 </svg>
               </button>
 
-              {/* Mobile Navigation Links */}
               <div className="flex flex-col items-start space-y-4 mt-8">
                 <a
                   href="https://github.com/Ciriously/SecretSharingApp/blob/main/README.md"
@@ -208,12 +206,12 @@ const Navbar = ({ isAuthenticated, user, onLogout }) => {
                 </div>
                 <button
                   className="text-white hover:text-blue-500 font-inter transition duration-300"
-                  onClick={handleLogin}
+                  onClick={handleSignup}
                 >
                   Signup
                 </button>
                 <button
-                  className=" hover:text-blue-500 transition duration-300 t bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
+                  className="hover:text-blue-500 transition duration-300 t bg-white text-black font-inter font-bold py-2 px-4 rounded-full"
                   onClick={handleLogin}
                 >
                   Login

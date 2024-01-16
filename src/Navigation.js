@@ -8,7 +8,7 @@ import Secrets from "./Pages/Secrets";
 const Navigation = () => {
   return (
     <Router>
-      {/* <nav>
+      <nav>
         <ul style={{ listStyle: "none", display: "flex", padding: 0 }}>
           <li style={{ marginRight: "10px" }}>
             <Link to="/home">Home</Link>
@@ -20,7 +20,7 @@ const Navigation = () => {
             <Link to="/secrets">Secrets</Link>
           </li>
         </ul>
-      </nav> */}
+      </nav>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
