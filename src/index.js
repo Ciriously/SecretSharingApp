@@ -30,7 +30,6 @@ root.render(
     }}
   >
     <Analytics />
-
     <App />
   </Auth0Provider>
 );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Analytics } from "@vercel/analytics/react";
 
 const LoginPage = () => {
   const { loginWithRedirect } = useAuth0();
@@ -29,6 +30,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen font-Inter">
+      <Analytics />
       {/* Left Section with Black Background (Hidden on Small Screens) */}
       <div className="hidden lg:flex lg:flex-none lg:w-1/2 bg-black text-white p-10 flex flex-col justify-between items-center relative">
         <div className="flex flex-col items-center mb-8">

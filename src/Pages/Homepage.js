@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import FeaturesPage from "./FeaturesPage";
+import { Analytics } from "@vercel/analytics/react";
 
 const HomePage = () => {
   const { user, isAuthenticated, logout } = useAuth0();
@@ -29,6 +30,7 @@ const HomePage = () => {
         user={user}
         onLogout={handleLogout}
       />
+      <Analytics />
 
       {/* SecretsGuardedCounter Component */}
       <div className="bg-gray-700 p-2 rounded-md justify-center w-full max-w-screen-md m-auto flex items-center h-16 text-center mt-8 md:mt-16 mb-8 md:mb-24">
