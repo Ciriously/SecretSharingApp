@@ -183,7 +183,7 @@ const Chatbox = () => {
           {messages.map((message, index) => (
             <div key={index} className="mb-4 flex items-start">
               <img
-                src={`https://placekitten.com/40/40?image=${index}`}
+                src={`https://randomfox.ca/images/${index}.jpg`}
                 alt="User Profile"
                 className="w-8 h-8 rounded-full mr-2"
               />
