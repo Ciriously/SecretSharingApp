@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 import "./index.css";
+import { Analytics } from "@vercel/analytics/react";
+
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -27,6 +29,8 @@ root.render(
       redirect_uri: window.location.origin,
     }}
   >
+    <Analytics />
+
     <App />
   </Auth0Provider>
 );
